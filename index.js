@@ -27,10 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * the varible is in different spots .Code 2  is global
  * 2. Which of the two uses a closure? How can you tell?
+ * code 1 does because it lets you add more of need be.
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? In code 2 if you need to reuse.
  *
 */
 
@@ -56,11 +57,12 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(number){
+ let randomNum=math.round(math.random()*2);
 
-    /*Code Here*/
-
-}
+};
+inning()
+console.log(getYears(getFinals, fifaData));
 
 /* Task 3: finalScore()
 
@@ -76,12 +78,24 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, innings){
+  let score = []
+  let randomHome = [];
+  let randomAway = [];
+  for (let i=0;i<innings;i++){
+    let randomHome2=(callback(0,2))
+    randomHome.push({'Score': randomHome2})}
+  for (let i=0;i<innings;i++){
+    let randomAway2=(callback(0,2))
+    randomAway.push({'Score': randomAway2})}
+  const finalHome = randomHome.reduce((total, score) =>{return total += score.Score},0)
+  const finalAway = randomAway.reduce((total, score) =>{return total += score.Score},0)
+  score.push ({'Home': finalHome, 'Away': finalAway});
+  return score;
 }
 
+
+console.log (finalScore(inning, 9))
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -103,8 +117,28 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cb, innNum) {
+  let score = {
+    "Home": 0,
+    "Away": 0,
+  }
+  let scorearray = [];
+  for(let i = 1; i <= innNum; i++ ) {
+      score["Home"] += cb(0,2);
+      score["Away"] += cb(0,2);
+      if (i === 1) {
+        scorearray.push (`1st inning: ${score["Home"]} - ${score["Away"]}`);
+      }
+      else if(i ===2) {
+        scorearray.push (`2nd inning: ${score["Home"]} - ${score["Away"]}`);
+      }
+      else if(i ===3) {
+        scorearray.push (`3rd inning: ${score["Home"]} - ${score["Away"]}`);
+      }
+      else {
+        scorearray.push (`${i}th inning: ${score["Home"]} - ${score["Away"]}`);
+      }
+    }
+  console.log (scorearray)
 }
-
-
+scoreboard (inning, 9);
