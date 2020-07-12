@@ -56,13 +56,12 @@ function counter2() {
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+function inning(){
+  let randomNum=Math.round(Math.random()*2);
+  return randomNum;
+ };
+ inning();
 
-function inning(number){
- let randomNum=math.round(math.random()*2);
-
-};
-inning()
-console.log(getYears(getFinals, fifaData));
 
 /* Task 3: finalScore()
 
@@ -83,10 +82,10 @@ function finalScore(callback, innings){
   let randomHome = [];
   let randomAway = [];
   for (let i=0;i<innings;i++){
-    let randomHome2=(callback(0,2))
+    let randomHome2=(callback())
     randomHome.push({'Score': randomHome2})}
   for (let i=0;i<innings;i++){
-    let randomAway2=(callback(0,2))
+    let randomAway2=(callback())
     randomAway.push({'Score': randomAway2})}
   const finalHome = randomHome.reduce((total, score) =>{return total += score.Score},0)
   const finalAway = randomAway.reduce((total, score) =>{return total += score.Score},0)
@@ -124,8 +123,8 @@ function scoreboard(cb, innNum) {
   }
   let scorearray = [];
   for(let i = 1; i <= innNum; i++ ) {
-      score["Home"] += cb(0,2);
-      score["Away"] += cb(0,2);
+      score["Home"] += cb();
+      score["Away"] += cb();
       if (i === 1) {
         scorearray.push (`1st inning: ${score["Home"]} - ${score["Away"]}`);
       }
